@@ -1,0 +1,118 @@
+<style>
+    body{
+        background: #f1f3f2;
+        padding-bottom: 150px;
+    }
+</style>
+<nav class="clear news-list-navwrapper">
+    <div class="logo">
+        <a href="#/products">
+            <img src="images/more.png">
+        </a>
+    </div>
+    <div class="navTitle">
+        <img src="images/logo.png">
+    </div>
+    <div class="navSearch">
+        <a href="#/">
+            <img src="images/account.png" alt="个人中心">
+        </a>
+    </div>
+</nav>
+<!--container-->
+<div class="main-container">
+    <div class="buy-wrap">
+        <div class="pack-wrap ">
+            <div class="intro-wrap clear">
+                <p class="item-title">女性常见癌症  深度筛查</p>
+                <p class="item-info">在全面筛查基础上，使用先进的MRI核<br>磁影像设备,深度筛查癌症风险</p>
+                <p class="item-price">
+                    <span class="now-price">¥ 1999</span>
+                    <span class="old-price">¥ 3860</span>
+                </p>
+            </div>
+            <div class="line"></div>
+            <div class="number-wrap clear">
+                <div class="count-name fn-left">
+                    检测人数
+                </div>
+                <div class="count-box fn-right">
+                    <span class="count-reduce count-btn" ng-click="reduce()" >-</span>
+                    <input class="count-num" type="text" name='number' value={{count}}>
+                    <span class="count-increase count-btn" ng-click="add()">+</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="pack-wrap">
+            <form action="">
+                <div class="rec-box">
+                    <label for="rec-name">收件人&nbsp;:</label>
+                    <input id="rec-name" name="consignee" type="text" placeholder="请输入收件人姓名" ng-model="orderInfo.consignee">
+                </div>
+                <div class="rec-box">
+                    <label for="rec-mobile">电&nbsp;&nbsp;&nbsp;话&nbsp;:</label>
+                    <input id="rec-mobile" name="receiptPhone" type="text" placeholder="请输入收件人手机号码" ng-model="orderInfo.receiptPhone">
+                </div>
+                <div class="rec-box">
+                    <label for="rec-address">地&nbsp;&nbsp;&nbsp;址&nbsp;:</label>
+                    <input id="rec-address" name="address" type="text" placeholder="__省__市__区(县)__街道__号" ng-model="orderInfo.address">
+                </div>
+                <div class="rec-box rec-method clear">
+                    <div class="fn-left">配送方式</div>
+                    <div class="fn-right">顺丰包邮</div>
+                </div>
+            </form>
+        </div>
+
+        <div class="pack-wrap">
+            <div class="rec-box">
+                <label for="rec-message">发票信息&nbsp;</label>
+                <div class="rec-bill fn-right" ng-click="layerShow()">{{billText}}  <span class="arrow">></span> </div>
+            </div>
+            <div class="rec-box">
+                <label for="rec-message">留言&nbsp;:</label>
+                <input id="rec-message" name="remark" type="text" placeholder="选填：对本次交易的特别要求" ng-model="remark">
+            </div>
+        </div>
+
+        <div class="sales-return">
+            <img src="images/salesReturn.png" alt="七天无理由退货" width="160px;" style="margin: 0 12px;">
+        </div>
+
+        <div class="submit-wrap">
+            <div class="total-amount">
+                总价 ：¥ {{orderAmount}}
+            </div>
+            <div class="order-btn">
+                <button  ng-click="orderSubmit()" ng-disabled='disabledBtn' ng-class="{'dis-btn':disabledBtn}">提交订单</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="layer-wrap">
+        <div class="bill-box">
+            <h3>发票类型</h3>
+            <ul class="clear">
+                <li ng-class="{'active':isSelected1}" ng-click="noBill()">不开发票</li>
+                <li ng-class="{'active':isSelected2}" ng-click="commonBill()">普通发票</li>
+            </ul>
+            <div class="bill-intro">
+                <div class="bill-intro-show" ng-show="isSelected2">
+                    <h4>发票信息</h4>
+                    <input type="radio" name="bill" value="0" checked="checked" ng-model="isChecked">个人&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="bill" value="1" ng-model="isChecked">单位
+
+                    <div class="company-box" ng-show="isChecked==1" >
+                        <input type="text" placeholder="请填写单位名称" ng-model="billCompany">
+                    </div>
+                </div>
+            </div>
+            <div class="bill-btn">
+                <button ng-click="billBtn()" ng-disabled="disabledBtn" ng-class="{'disabled-btn':disabledBtn}">确定</button>
+            </div>
+            <div class="close-btn" ng-click="layerClose()">X</div>
+        </div>
+
+    </div>
+</div>

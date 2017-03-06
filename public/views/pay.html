@@ -1,0 +1,26 @@
+<style>
+    body{
+        background: #f1f3f2;
+        padding-bottom: 150px;
+    }
+</style>
+
+<!--container-->
+<div class="main-container">
+    <div class="pay-wrap">
+        <div class="amount-wrap item">
+            应付金额 : <span class="pay-amount">{{orderAmount}}</span> 元
+        </div>
+
+        <div class="wx-pay item">
+            <input type="radio"  checked>  微信支付
+            <img src="images/weixin.png" alt="微信支付">
+        </div>
+
+        <div class="pay-btn-wrap">
+            <button ng-disabled="disabledBtn" ng-class="{'dis-btn':disabledBtn}" ng-click="paySubmit()">去支付</button>
+        </div>
+    </div>
+
+
+</div>
